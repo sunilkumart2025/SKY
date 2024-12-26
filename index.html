@@ -10,77 +10,182 @@
             margin: 0;
             font-family: Arial, sans-serif;
             overflow-x: hidden;
-            background-color: #f0f4f8;
+            background-color: #121212; /* Dark background */
+            color: #e0e0e0; /* Light text */
+            position: relative;
         }
 
-        /* Animated Background Effect for SKY */
-        @keyframes text-shadow-effect {
+        /* Dark Theme background design */
+        .background-design {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, #1a237e, #4a148c); /* Darker gradient */
+            clip-path: circle(30% at right 70%);
+            z-index: -1;
+            animation: move-background 10s infinite linear;
+        }
+
+        @keyframes move-background {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        /* Floating animated circles */
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            animation: move-circles 15s infinite ease-in-out;
+            z-index: -1;
+        }
+
+        .circle-one {
+            width: 150px;
+            height: 150px;
+            top: 20%;
+            left: 30%;
+            animation-delay: 0s;
+        }
+
+        .circle-two {
+            width: 100px;
+            height: 100px;
+            top: 50%;
+            left: 60%;
+            animation-delay: 3s;
+        }
+
+        .circle-three {
+            width: 200px;
+            height: 200px;
+            top: 70%;
+            left: 10%;
+            animation-delay: 6s;
+        }
+
+        @keyframes move-circles {
             0% {
-                text-shadow: 2px 2px 5px #007BFF, -2px -2px 5px #6A5ACD;
+                transform: translateY(0) translateX(0);
             }
             50% {
-                text-shadow: 4px 4px 10px #1E90FF, -4px -4px 10px #9370DB;
+                transform: translateY(20px) translateX(100px);
             }
             100% {
-                text-shadow: 2px 2px 5px #007BFF, -2px -2px 5px #6A5ACD;
+                transform: translateY(0) translateX(0);
             }
         }
 
-        header h1 {
-            animation: text-shadow-effect 3s infinite;
-            font-size: 3rem;
+        /* Moving Image */
+        .moving-image {
+            position: absolute;
+            top: 10%;
+            right: -100px;
+            width: 150px;
+            animation: move-image 30s linear infinite;
+            z-index: -1;
         }
 
+        @keyframes move-image {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(100vw); /* Moves across the entire viewport */
+            }
+        }
+
+        /* Header Section with Dark Theme */
         header {
             text-align: center;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(106, 90, 205, 0.8));
+            border-bottom: 5px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            color: #fff;
         }
 
         header h1 {
+            font-size: 3rem;
             margin: 0;
-            font-size: 2.5rem;
-            color: #333;
+            text-transform: uppercase;
+            animation: header-text-animation 3s ease-in-out infinite;
         }
 
         header p {
-            margin: 0;
             font-size: 1.2rem;
-            color: #555;
+            margin-top: 10px;
+            opacity: 0.8;
+            letter-spacing: 1px;
         }
 
+        @keyframes header-text-animation {
+            0% {
+                transform: translateY(0);
+                color: #ffffff;
+            }
+            50% {
+                transform: translateY(-5px);
+                color: #1E90FF;
+            }
+            100% {
+                transform: translateY(0);
+                color: #ffffff;
+            }
+        }
+
+        /* Navigation Bar with Dark Theme */
         nav {
             display: flex;
             justify-content: flex-end;
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.1);
             padding: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         nav a {
             margin: 0 15px;
             text-decoration: none;
-            color: #333;
+            color: #e0e0e0;
             font-weight: bold;
+            transition: color 0.3s ease-in-out;
         }
 
         nav a:hover {
-            color: #007BFF;
+            color: #1E90FF;
+            text-shadow: 2px 2px 5px rgba(0, 123, 255, 0.8);
         }
 
+        /* Box Styling with Dark Theme */
         .box {
             margin: 40px auto;
             max-width: 600px;
-            background: white;
+            background: #333333; /* Dark box background */
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            animation: fade-in 2s forwards;
+            text-align: center;
+        }
+
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .box h2 {
             font-size: 1.8rem;
-            color: #007BFF;
+            color: #1E90FF; /* Bright accent color */
         }
 
         .box p {
@@ -91,55 +196,44 @@
         .box button {
             padding: 10px 20px;
             font-size: 1rem;
-            color: white;
-            background-color: #007BFF;
-            border: none;
+            color: #fff;
+            background-color: #333333; /* Dark button background */
+            border: 1px solid #1E90FF;
             border-radius: 5px;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
 
         .box button:hover {
-            background-color: #0056b3;
+            background-color: #1E90FF;
+            color: #333;
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(30, 144, 255, 0.3);
         }
 
         footer {
             text-align: center;
             padding: 20px;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
+            background-color: #000;
+            color: #bbb;
             position: relative;
         }
 
-        .toggle {
-            position: absolute;
-            right: 20px;
-            bottom: 20px;
-            background-color: white;
-            border: 2px solid #555;
-            padding: 10px;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-
-        .dark-mode {
-            background-color: #2c3e50;
-            color: white;
-        }
-
-        .dark-mode .box {
-            background-color: #34495e;
-            color: white;
-        }
-
-        .dark-mode nav {
-            background-color: #34495e;
-        }
     </style>
 </head>
 <body>
+    <div class="background-design"></div> <!-- Creative dark background design -->
+
+    <!-- Floating Circles -->
+    <div class="floating-circle circle-one"></div>
+    <div class="floating-circle circle-two"></div>
+    <div class="floating-circle circle-three"></div>
+
+    <!-- Moving Image -->
+    <img class="moving-image" src="https://via.placeholder.com/150" alt="Moving Image">
+
     <header>
         <h1>SKY</h1>
-        <p>Course Central</p>
     </header>
 
     <nav>
@@ -150,26 +244,17 @@
     <div class="box">
         <h2>Welcome to Course Central</h2>
         <p>Your ultimate platform for curated courses and educational resources.</p>
-        <button onclick="alert('Navigating to Course Central section')">Explore Course Central</button>
+        <button onclick="window.location.href='#home';">Explore Course Central</button>
     </div>
 
     <div class="box">
         <h2>Study Resources for SRM Students</h2>
         <p>Access specially tailored resources to excel in your academic journey.</p>
-        <button onclick="alert('https://srm-gamma.vercel.app/')">Access Resources</button>
+        <button onclick="window.location.href='https://srm-gamma.vercel.app/';">Access Resources</button>
     </div>
 
     <footer>
-        <p>&copy; 2024 SKY. All rights reserved.</p>
-        <div class="toggle" onclick="toggleMode()">&#x1F319;</div>
+        <p>Empowering Your Learning Journey. | Achieve Greatness, Together.</p>
     </footer>
-
-    <script>
-        function toggleMode() {
-            document.body.classList.toggle('dark-mode');
-            const toggleIcon = document.querySelector('.toggle');
-            toggleIcon.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-        }
-    </script>
 </body>
 </html>
